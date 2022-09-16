@@ -7,6 +7,7 @@ import SymbolTable
 skippedCharacters = SymbolTable.skippedCharacters
 separators = SymbolTable.separators
 reservedWords = SymbolTable.reservedWords
+permittedCharacters = SymbolTable.permittedCharacters
 readedTokens = []
 
 def readFile():
@@ -19,6 +20,7 @@ def analize():
     
     for line in file:
         currToken = ""
+        skipTokens = 0
         for i in range(0, len(line)):
             if(line[i] == '/' and line[i+1] == '/'): #Skip lines with one-line comment
                 break
@@ -31,6 +33,20 @@ def analize():
                     if(currToken != ""):
                         readedTokens.append(currToken)
                         currToken = ""
+                elif(skipTokens > 0):
+                    skipTokens = skipTokens - 1
+                elif(i+2 < len(line) and line[i]+line[i+1]+line[i+2] in separators):    #3 character tokens
+                    if(currToken != ""):
+                        readedTokens.append(currToken)
+                        currToken = ""
+                    readedTokens.append(line[i]+line[i+1]+line[i+2])
+                    skipTokens = 2
+                elif(i+1 < len(line) and line[i]+line[i+1] in separators):
+                    if(currToken != ""):
+                        readedTokens.append(currToken)
+                        currToken = ""
+                    readedTokens.append(line[i]+line[i+1])
+                    skipTokens = 1
                 elif(line[i] in separators and (currToken + line[i]) not in reservedWords):
                     if(currToken != ""):
                         readedTokens.append(currToken)
@@ -46,13 +62,13 @@ def classifyTokens():
         if (readedTokens[i] == ('"' or "'")):
             isAString = not isAString
             print(readedTokens[i], separators[readedTokens[i]])
+        elif(isAString == True):                                #Print strings
+            print(readedTokens[i], "LineString")
         elif((readedTokens[i] in separators) and isAString == False):  #Print separators
             print(readedTokens[i], separators[readedTokens[i]])
         elif((readedTokens[i] in reservedWords) and isAString == False):    #Print reserved words
             print(readedTokens[i], reservedWords[readedTokens[i]])
-        elif(isAString == True):                                        #Print string literals
-            print(readedTokens[i], "LineString")
-        else:
+        elif(readedTokens[i] in permittedCharacters):
             print(readedTokens[i], "ID")                      # All other characters are id's
 
 # Driver code

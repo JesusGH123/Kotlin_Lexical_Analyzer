@@ -42,3 +42,5 @@ reservedWords = {
     "Array": "ARRAY", "ListOf": "LIST_TYPE", "List": "LIST",
     "String": "DATA_TYPE", "Float": "DATA_TYPE", "Int": "DATA_TYPE", "Char": "DATA_TYPE"
 }
+
+permittedCharacters = [separators, reservedWords]

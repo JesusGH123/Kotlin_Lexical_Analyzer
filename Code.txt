@@ -6,7 +6,7 @@ fun main(args: Array<String>) {
     val string = "hola"
     
     if(number===number.length) {
-        number++
+        number ++
     }
 
     return@
