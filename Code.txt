@@ -2,7 +2,12 @@
 //This is a kotlin comment
 
 fun main(args: Array<String>) {    
-    val = 9
+    val number = 9_000_000
+    val string = "hola"
     
-    println("Hello, World!")
+    if(number===number.length) {
+        number++
+    }
+
+    return@
 }

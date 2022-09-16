@@ -15,6 +15,8 @@ separators = {
     "<": "LANGLE", ">": "RANGLE", "<=": "LE", ">=": "GE",
     "!=": "EXCL_EQ", "EXCL_EQEQ": "!==", "as?": "AS_SAFE", "==": "EQEQ", "===": "EQEQEQ",
     "'": "SINGLE_QUOTE", '"': "QUOTE_OPEN",'"""': "TRIPLE_QUOTE_OPEN", "&": "AMP",
+
+    "0": "DecDigit", "1": "DecDigit", "2": "DecDigit", "3": "DecDigit", "4": "DecDigit", "5": "DecDigit", "6": "DecDigit", "7": "DecDigit", "8": "DecDigit", "9": "DecDigit",
 }
 
 reservedWords = {
@@ -32,7 +34,6 @@ reservedWords = {
     "value": "VALUE", "tailrec": "TAILREC", "operator": "OPERATOR", "inline": "INLINE", "infix": "INFIX", "external": "EXTERNAL", "suspend": "SUSPEND", "override": "OVERRIDE", "abstract": "ABSTRACT",
     "final": "FINAL", "open": "OPEN", "const": "CONST", "lateinit": "LATEINIT", "vararg": "VARARG", "noinline": "NOINLINE", "crossonline": "CROSSINLINE", "reified": "REIFIED", "expect": "EXPECT", "actual": "ACTUAL",
     #Section: Literals
-    "0": "DecDigit", "1": "DecDigit", "2": "DecDigit", "3": "DecDigit", "4": "DecDigit", "5": "DecDigit", "6": "DecDigit", "7": "DecDigit", "8": "DecDigit", "9": "DecDigit",
     "_": "Separator", "e": "Exponent", "E": "Exponent",
     "true": "BooleanLiteral", "null": "NullLiteral", "\\": "CharacterLiteral", "$": "FieldIdentifier",
     "${": "LineExprStart",
