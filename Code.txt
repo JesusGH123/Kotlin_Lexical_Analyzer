@@ -1,5 +1,8 @@
 //Hello world program
+//This is a kotlin comment
 
-fun main(args : Array<String>) {
+fun main(args: Array<String>) {    
+    val = 9
+    
     println("Hello, World!")
 }
