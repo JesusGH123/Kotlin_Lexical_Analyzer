@@ -2,12 +2,14 @@
 #Jesus Garcia Hernandez     A01423730
 import sys
 import SymbolTable
+import colorama
+from colorama import Fore
 
 #Variables
 skippedCharacters = SymbolTable.skippedCharacters
 separators = SymbolTable.separators
 reservedWords = SymbolTable.reservedWords
-permittedCharacters = SymbolTable.permittedCharacters
+alphabet = SymbolTable.alphabet
 readedTokens = []
 
 def readFile():
@@ -68,8 +70,17 @@ def classifyTokens():
             print(readedTokens[i], separators[readedTokens[i]])
         elif((readedTokens[i] in reservedWords) and isAString == False):    #Print reserved words
             print(readedTokens[i], reservedWords[readedTokens[i]])
-        elif(readedTokens[i] in permittedCharacters):
-            print(readedTokens[i], "ID")                      # All other characters are id's
+        else:
+            for character in readedTokens[i]:
+                if(character not in alphabet):
+                    print(Fore.RED + "ERROR: Non recognized character at line " + searchError(readedTokens[i]) + Fore.WHITE)
+                    return
+            print(readedTokens[i], "ID")
+
+def searchError(IncorrectToken):
+    for line in range(0, len(file)):
+        if IncorrectToken in file[line]:
+            return str(line+1)  
 
 # Driver code
 readFile()
