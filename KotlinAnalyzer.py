@@ -41,15 +41,15 @@ def analize():
                     if(currToken != ""):
                         readedTokens.append(currToken)
                         currToken = ""
-                    readedTokens.append(line[i]+line[i+1]+line[i+2])
+                    readedTokens.append(line[i]+line[i+1]+line[i+2])  
                     skipTokens = 2
-                elif(i+1 < len(line) and line[i]+line[i+1] in separators):
+                elif(i+1 < len(line) and line[i]+line[i+1] in separators): #2 character tokens
                     if(currToken != ""):
                         readedTokens.append(currToken)
                         currToken = ""
                     readedTokens.append(line[i]+line[i+1])
                     skipTokens = 1
-                elif(line[i] in separators and (currToken + line[i]) not in reservedWords):
+                elif(line[i] in separators and (currToken + line[i]) not in reservedWords): # character tokens
                     if(currToken != ""):
                         readedTokens.append(currToken)
                         currToken = ""
@@ -59,13 +59,22 @@ def analize():
 
 def classifyTokens():
     isAString = False
+    isAnInterpolation = False
 
     for i in range(0, len(readedTokens)):
-        if (readedTokens[i] == '"' or readedTokens[i] == "'" or readedTokens[i] == '"""'):
+        if (readedTokens[i] == '"""' or readedTokens[i] == "'" or readedTokens[i] == '"'):
             isAString = not isAString
             print(readedTokens[i], separators[readedTokens[i]])
-        elif(isAString == True):                             #Print strings
+        elif(isAString and "${" in readedTokens[i]):
+            isAnInterpolation = True
+            print(readedTokens[i], "String interpolation")
+        elif(isAString and "}" in readedTokens[i]):
+            isAnInterpolation = False
+            print(readedTokens[i], "String interpolation")
+        elif(isAString and isAnInterpolation == False):       #Print strings
             print(readedTokens[i], "LineString")
+        elif(isAString and isAnInterpolation):
+            print(readedTokens[i], "String interpolation")
         elif((readedTokens[i] in separators) and isAString == False):  #Print separators
             print(readedTokens[i], separators[readedTokens[i]])
         elif((readedTokens[i] in reservedWords) and isAString == False):    #Print reserved words
