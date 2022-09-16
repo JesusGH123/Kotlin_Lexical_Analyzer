@@ -61,10 +61,10 @@ def classifyTokens():
     isAString = False
 
     for i in range(0, len(readedTokens)):
-        if (readedTokens[i] == ('"' or "'")):
+        if (readedTokens[i] == '"' or readedTokens[i] == "'" or readedTokens[i] == '"""'):
             isAString = not isAString
             print(readedTokens[i], separators[readedTokens[i]])
-        elif(isAString == True):                                #Print strings
+        elif(isAString == True):                             #Print strings
             print(readedTokens[i], "LineString")
         elif((readedTokens[i] in separators) and isAString == False):  #Print separators
             print(readedTokens[i], separators[readedTokens[i]])
