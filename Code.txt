@@ -1,14 +1,37 @@
 //Hello world program
 //This is a kotlin comment
 
-fun main(args: Array<String>) {    
-    val number = 9_000_000
-    val string = """hola 
-    ${number+number} adios"""
-    
-    if(number===number.length) {
-        number++
-    }
+#! downloads/documents/asldasldss
 
-    return@
+fun main(args: Array<String>) {    
+    if(match.channels.isEmpty().not()) {
+            val channels = mutableListOf<ImageView>()
+
+            if (match.channels.size % 2 == 1 && match.channels[0].logoUrl.isEmpty().not()) {
+                channelImage1?.let { channels.add(it) }
+                channelImage1?.let { ViewVisibilityHelper.toggleVisibility(it, true) }
+            }
+            channelImage2?.let { channels.add(it) }
+            channelImage3?.let { channels.add(it) }
+            channelImage4?.let { channels.add(it) }
+            channelImage5?.let { channels.add(it) }
+
+            if (match.channels.size % 2 == 0 && match.channels[0].logoUrl.isEmpty().not()){
+                channelImage1?.let { ViewVisibilityHelper.toggleVisibility(it, false) }
+            }
+
+            if(channels.isEmpty().not()) {
+                for (i in 0 until match.channels.size) {
+                    channels[i].let { imageView ->
+                        imageLoader.loadImage(
+                            imageView,
+                            ImageRequest(
+                                imageUrl = match.channels[i].logoUrl,
+                                contentDescription = match.channels[i].name
+                            )
+                        )
+                    }
+                }
+            }
+        }
 }

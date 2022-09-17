@@ -28,6 +28,9 @@ def analize():
                 break
             elif(delimitedComment == False and line[i] == '/' and line[i+1] == '*'):  #Begginning of a multi-line comment
                 delimitedComment = True
+            elif(line[i] == "#" and line[i+1] == "!"):
+                readedTokens.append(line[i]+line[i+1])
+                break
             elif(delimitedComment == True and line[i-1] == '*' and line[i] == '/'):  #End of multi-line comment
                 delimitedComment = False
             else:        #Begin lexical check
@@ -74,22 +77,26 @@ def classifyTokens():
         elif(isAString and isAnInterpolation == False):       #Print strings
             print(readedTokens[i], "LineString")
         elif(isAString and isAnInterpolation):
+            tokenValidation(readedTokens[i])
             print(readedTokens[i], "String interpolation")
         elif((readedTokens[i] in separators) and isAString == False):  #Print separators
             print(readedTokens[i], separators[readedTokens[i]])
         elif((readedTokens[i] in reservedWords) and isAString == False):    #Print reserved words
             print(readedTokens[i], reservedWords[readedTokens[i]])
         else:
-            for character in readedTokens[i]:
-                if(character not in alphabet):
-                    print(Fore.RED + "ERROR: Non recognized character at line " + searchError(readedTokens[i]) + Fore.WHITE)
-                    return
+            tokenValidation(readedTokens[i])
             print(readedTokens[i], "ID")
 
 def searchError(IncorrectToken):
     for line in range(0, len(file)):
         if IncorrectToken in file[line]:
             return str(line+1)  
+
+def tokenValidation(token):
+    for character in token:
+                if(character not in alphabet):
+                    print(Fore.RED + "ERROR: Non recognized character at line " + searchError(token) + Fore.WHITE)
+                    exit(-1)
 
 # Driver code
 readFile()
