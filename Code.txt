@@ -4,6 +4,15 @@
 #! downloads/documents/asldasldss
 
 fun main(args: Array<String>) {    
+    val number = 9_000_000
+    val string = """hola 
+    ${number+number} adios"""
+
+    if(number===number.length) {
+        number++
+    }
+
+    return@
     if(match.channels.isEmpty().not()) {
             val channels = mutableListOf<ImageView>()
 
