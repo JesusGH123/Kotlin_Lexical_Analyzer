@@ -110,7 +110,7 @@ def searchError(IncorrectToken):
             return str(line+1)  
 
 def tokenValidation(token):
-    splitters = ['+','-','.']
+    splitters = ['+','-']
     splittedToken = []
     currToken = ""
 
