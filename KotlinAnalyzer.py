@@ -134,7 +134,8 @@ def tokenValidation(token):
         if(token in reservedWords):
             print(token, reservedWords[token])
         else:
-            print(token, "ID")
+            if(literalValidation(token, True) == False):
+                print(token, "ID")
 
 # Driver code
 readFile()
