@@ -15,7 +15,7 @@ readedTokens = []
 
 def readFile():
     global file
-    with open("Code.txt") as f:
+    with open(sys.argv[1]) as f:
         file = f.readlines() 
 
 def analize():
@@ -78,8 +78,7 @@ def classifyTokens():
         elif(isAString and isAnInterpolation == False):       #Print strings
             print(readedTokens[i], "LineString")
         elif(isAString and isAnInterpolation):
-            #tokenValidation(readedTokens[i])
-            print(readedTokens[i], "String interpolation")
+            tokenValidation(readedTokens[i])
         elif((readedTokens[i] in separators) and isAString == False):  #Print separators
             print(readedTokens[i], separators[readedTokens[i]])
         elif((readedTokens[i] in reservedWords) and isAString == False):    #Print reserved words
@@ -110,12 +109,20 @@ def searchError(IncorrectToken):
             return str(line+1)  
 
 def tokenValidation(token):
-    splitters = ['+','-']
+    isNumeric = True
     splittedToken = []
     currToken = ""
 
+    splitters = []
+
+    #Check if it is a token or a literal
+    for i in range(0, len(token)):
+        if(token[i] != '.' and token[i].isnumeric() == False):
+            isNumeric = False
+
+    #Split tokens
     for i in range(0, len(token)+1):
-        if(i<len(token) and token[i] in splitters):
+        if(i<len(token) and token[i] == '.' and isNumeric == False):
             splittedToken.append(currToken)
             splittedToken.append(token[i])
             currToken = ""
@@ -123,9 +130,9 @@ def tokenValidation(token):
             splittedToken.append(currToken)
         else:
             currToken += token[i]
-    
+
     for token in splittedToken:
-        for character in token:         #Validate the token
+        for character in token:         #Validate each token
             if(character not in alphabet and
                 character not in reservedWords and
                 character not in separators):
@@ -133,8 +140,10 @@ def tokenValidation(token):
                 exit(-1)
         if(token in reservedWords):
             print(token, reservedWords[token])
+        elif(token in separators):
+            print(token, separators[token])
         else:
-            if(literalValidation(token, True) == False):
+            if(literalValidation(token, True) == False and token != ""):
                 print(token, "ID")
 
 # Driver code

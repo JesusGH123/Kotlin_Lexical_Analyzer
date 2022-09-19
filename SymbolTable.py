@@ -5,6 +5,7 @@ separators = {
 
     #Separators and operations
     #".": "DOT",
+     "+": "ADD", "-": "SUB",
      "...": "RESERVED", ",": "COMMA",
     "(": "LPAREN", ")": "RPAREN", "[": "LSQUARE", "]": "RSQUARE", "{": "LCURL", "}": "RCURL",
     "*": "MULT", "%": "MOD", "/": "DIV",
@@ -26,8 +27,8 @@ reservedWords = {
     "package": "PACKAGE", "import": "IMPORT", "class": "CLASS", "interface": "INTERFACE", "fun": "FUN", "object": "OBJECT",
     "val": "VAL", "var": "VAR", "typealias": "TYPE_ALIAS", "constructor": "CONSTRUCTOR", "by": "BY", "companion": "COMPANION",
     "init": "INIT", "this": "THIS", "super": "SUPER", "typeof": "TYPEOF", "where": "WHERE", "if": "IF", "else": "ELSE", "when": "WHEN",
-    "try": "TRY", "catch": "CATCH", "finally": "FINALLY", "for": "FOR", "forEach": "FOR_EACH", "do": "DO", "while": "WHILE", "throw": "THROW", "return": "RETURN", "continue": "CONTINUE", "break": "BREAK",
-    "as": "AS", "is": "IS", "in": "IN", "!is": "NOT_IS", "!in": "NOT_IN", "out": "OUT", "dynamic": "dynamic", "it": "IT",
+    "try": "TRY", "catch": "CATCH", "finally": "FINALLY", "for": "FOR", "forEach": "FOR_EACH", "do": "DO", "while": "WHILE", "throw": "THROW", "return": "RETURN", "continue": "CONTINUE", "break": "BREAK", "until": "UNTIL",
+    "as": "AS", "is": "IS", "in": "IN", "not": "NOT", "!is": "NOT_IS", "!in": "NOT_IN", "out": "OUT", "dynamic": "dynamic", "it": "IT", 
     #Lexical modifiers
     "public": "PUBLIC", "private": "PRIVATE", "protected": "PROTECTED", "internal": "INTERNAL", "enum": "ENUM", "sealed": "SEALED", "annotation": "ANNOTATION", "data": "DATA", "inner": "INNER",
     "value": "VALUE", "tailrec": "TAILREC", "operator": "OPERATOR", "inline": "INLINE", "infix": "INFIX", "external": "EXTERNAL", "suspend": "SUSPEND", "override": "OVERRIDE", "abstract": "ABSTRACT",
@@ -36,8 +37,8 @@ reservedWords = {
     "true": "BooleanLiteral", "false": "BooleanLiteral", "null": "NullLiteral", "\\": "CharacterLiteral", "$": "FieldIdentifier",
 
     #Extras
-    ".": "DOT", "+": "ADD", "-": "SUB",
-    "Array": "ARRAY", "ListOf": "LIST_TYPE", "MutableList": "mutableListOf", "SET_TYPE": "setOf",  "MAP_TYPE": "mapOf", "MUTABLE_MAP": "mutableMapOf",
+    ".": "DOT",
+    "Array": "ARRAY", "ListOf": "LIST_TYPE", "mutableListOf": "LIST_TYPE", "setOf": "SET_TYPE",  "mapOf": "MAP_TYPE", "mutableMapOf": "MUTABLE_MAP",
     "String": "DATA_TYPE", "Float": "DATA_TYPE", "Int": "DATA_TYPE", "Char": "DATA_TYPE", "Double": "DATA_TYPE", "Boolean": "DATA_TYPE", "Byte": "DATA_TYPE", "Short": "DATA_TYPE", "Long": "DATA_TYPE",
 }
 

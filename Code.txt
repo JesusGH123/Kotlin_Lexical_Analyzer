@@ -6,7 +6,7 @@
 fun main(args: Array<String>) {    
     val number = 9_000_000
     val string = """hola 
-    ${number+number} adios"""
+    ${3.2+number} adios"""
 
     3.3f+3e10
     if(number===number.length) {
@@ -22,8 +22,9 @@ fun main(args: Array<String>) {
             }
             channelImage2?.let { channels.add(it) }
             channelImage3?.let { channels.add(it) }
-            channelImage4?.let { channels.add(it) }
+            channelImage4?.let { chánnels.add(it) }
             channelImage5?.let { channels.add(it) }
+
 
             if (match.channels.size % 2 == 0 && match.channels[0].logoUrl.isEmpty().not()){
                 channelImage1?.let { ViewVisibilityHelper.toggleVisibility(it, false) }
