@@ -25,7 +25,7 @@ def analize():
         currToken = ""
         skipTokens = 0
         for i in range(0, len(line)):
-            if(line[i] == '/' and line[i+1] == '/'): #Skip lines with one-line comment
+            if(i+1<len(line) and line[i] == '/' and line[i+1] == '/'): #Skip lines with one-line comment
                 break
             elif(delimitedComment == False and line[i] == '/' and line[i+1] == '*'):  #Begginning of a multi-line comment
                 delimitedComment = True
@@ -34,6 +34,8 @@ def analize():
                 break
             elif(delimitedComment == True and line[i-1] == '*' and line[i] == '/'):  #End of multi-line comment
                 delimitedComment = False
+            elif(delimitedComment == True):
+                continue
             else:        #Begin lexical check
                 if(line[i] in skippedCharacters):   #Check for skipping tokens
                     if(currToken != ""):

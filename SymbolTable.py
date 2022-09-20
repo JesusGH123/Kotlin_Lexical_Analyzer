@@ -4,7 +4,6 @@ separators = {
     "#!": "SheBangLine",
 
     #Separators and operations
-    #".": "DOT",
      "+": "ADD", "-": "SUB",
      "...": "RESERVED", ",": "COMMA",
     "(": "LPAREN", ")": "RPAREN", "[": "LSQUARE", "]": "RSQUARE", "{": "LCURL", "}": "RCURL",

@@ -13,7 +13,7 @@ fun main(args: Array<String>) {
         number++
     }
 
-    if(match.channels.isEmpty().not()) {
+    /*if(match.channels.isEmpty().not()) {
             val channels = mutableListOf<ImageView>()
 
             if (match.channels.size % 2 == 1 && match.channels[0].logoUrl.isEmpty().not()) {
@@ -22,7 +22,7 @@ fun main(args: Array<String>) {
             }
             channelImage2?.let { channels.add(it) }
             channelImage3?.let { channels.add(it) }
-            channelImage4?.let { chánnels.add(it) }
+            channelImage4?.let { channels.add(it) }
             channelImage5?.let { channels.add(it) }
 
 
@@ -45,5 +45,5 @@ fun main(args: Array<String>) {
             }
         }
 
-        return@
+        return@*/
 }
